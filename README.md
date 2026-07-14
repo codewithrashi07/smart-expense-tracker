@@ -15,7 +15,7 @@ A modern, full-stack **Smart Expense Tracker** built with the **MERN Stack** to 
 
 ## 🚀 Live Demo
 
-# Frontend: https://smart-expense-tracker.vercel.app
+#Frontend: https://smart-expense-tracker.vercel.app
 
 Backend API: https://smart-expense-tracker-api.onrender.com
 ---
