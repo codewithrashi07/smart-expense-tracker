@@ -1,4 +1,4 @@
-                                                Smart Expense Tracker
+Smart Expense Tracker
 
 A modern, full-stack **Smart Expense Tracker** built with the **MERN Stack** to help users manage income, expenses, budgets, and financial insights. The application provides an intuitive dashboard, detailed analytics, secure authentication, and a responsive user experience.
 
@@ -239,7 +239,7 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 
-**Your Name**
+ Rashi Yadav
 
 GitHub: https://github.com/codewithrashi07
 
