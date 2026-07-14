@@ -1,4 +1,8 @@
-                                    # Smart Expense Tracker 
+ <h1 align="center">🚀 Smart Expense Tracker</h1>
+
+<p align="center">
+A modern, full-stack MERN app to manage income, expenses, and budgets
+</p>
 
 A modern, full-stack **Smart Expense Tracker** built with the **MERN Stack** to help users manage income, expenses, budgets, and financial insights. The application provides an intuitive dashboard, detailed analytics, secure authentication, and a responsive user experience.
 
