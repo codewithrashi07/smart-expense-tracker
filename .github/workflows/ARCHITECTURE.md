@@ -1,20 +1,28 @@
-Architecture Overview
+# Architecture Overview
+
 This document describes the high-level architecture, system design, and technical decisions for the Smart Expense Tracker application.
 
-Table of Contents
-System Architecture
-Technology Stack
-Directory Structure
-Data Flow
-Database Schema
-API Architecture
-Frontend Architecture
-Authentication Flow
-Deployment Architecture
-Security Architecture
-Performance Optimization
-System Architecture
-High-Level Overview
+## Table of Contents
+
+- [System Architecture](#system-architecture)
+- [Technology Stack](#technology-stack)
+- [Directory Structure](#directory-structure)
+- [Data Flow](#data-flow)
+- [Database Schema](#database-schema)
+- [API Architecture](#api-architecture)
+- [Frontend Architecture](#frontend-architecture)
+- [Authentication Flow](#authentication-flow)
+- [Deployment Architecture](#deployment-architecture)
+- [Security Architecture](#security-architecture)
+- [Performance Optimization](#performance-optimization)
+
+---
+
+## System Architecture
+
+### High-Level Overview
+
+```
 ┌─────────────────────────────────────────────────────────────────┐
 │                        User Browser                              │
 │                                                                   │
@@ -78,37 +86,56 @@ High-Level Overview
 External Services:
 ├─ Cloudinary (Image Storage & Processing)
 └─ Vercel/Render (Deployment & Hosting)
-Technology Stack
-Frontend Stack
-Layer	Technology	Purpose
-UI Framework	React 19	Component-based UI
-Build Tool	Vite	Fast build & dev server
-Styling	Tailwind CSS	Utility-first CSS framework
-Routing	React Router v6	Client-side routing
-HTTP Client	Axios	REST API calls
-State Management	Context API	Global state management
-Forms	React Hook Form	Efficient form handling
-Charts	Recharts	Data visualization
-Animations	Framer Motion	Smooth animations
-Package Manager	npm	Dependency management
-Backend Stack
-Layer	Technology	Purpose
-Runtime	Node.js	JavaScript runtime
-Framework	Express.js	Web server framework
-Database	MongoDB + Mongoose	NoSQL database & ODM
-Authentication	JWT + Bcrypt	Secure auth & encryption
-File Upload	Multer + Cloudinary	Image upload handling
-Environment	dotenv	Environment variables
-CORS	cors package	Cross-origin requests
-Package Manager	npm	Dependency management
-Deployment Stack
-Component	Service	Region
-Frontend	Vercel	Edge globally
-Backend	Render	US/EU regions
-Database	MongoDB Atlas	AWS/Azure/Google Cloud
-Storage	Cloudinary	CDN globally
-Directory Structure
-Frontend (client/)
+```
+
+---
+
+## Technology Stack
+
+### Frontend Stack
+
+| Layer | Technology | Purpose |
+|-------|-----------|---------|
+| **UI Framework** | React 19 | Component-based UI |
+| **Build Tool** | Vite | Fast build & dev server |
+| **Styling** | Tailwind CSS | Utility-first CSS framework |
+| **Routing** | React Router v6 | Client-side routing |
+| **HTTP Client** | Axios | REST API calls |
+| **State Management** | Context API | Global state management |
+| **Forms** | React Hook Form | Efficient form handling |
+| **Charts** | Recharts | Data visualization |
+| **Animations** | Framer Motion | Smooth animations |
+| **Package Manager** | npm | Dependency management |
+
+### Backend Stack
+
+| Layer | Technology | Purpose |
+|-------|-----------|---------|
+| **Runtime** | Node.js | JavaScript runtime |
+| **Framework** | Express.js | Web server framework |
+| **Database** | MongoDB + Mongoose | NoSQL database & ODM |
+| **Authentication** | JWT + Bcrypt | Secure auth & encryption |
+| **File Upload** | Multer + Cloudinary | Image upload handling |
+| **Environment** | dotenv | Environment variables |
+| **CORS** | cors package | Cross-origin requests |
+| **Package Manager** | npm | Dependency management |
+
+### Deployment Stack
+
+| Component | Service | Region |
+|-----------|---------|--------|
+| **Frontend** | Vercel | Edge globally |
+| **Backend** | Render | US/EU regions |
+| **Database** | MongoDB Atlas | AWS/Azure/Google Cloud |
+| **Storage** | Cloudinary | CDN globally |
+
+---
+
+## Directory Structure
+
+### Frontend (`client/`)
+
+```
 client/
 ├── src/
 │   ├── components/
@@ -168,7 +195,11 @@ client/
 ├── tailwind.config.js
 ├── postcss.config.js
 └── .env.example
-Backend (server/)
+```
+
+### Backend (`server/`)
+
+```
 server/
 ├── config/
 │   ├── database.js                  # MongoDB connection
@@ -214,8 +245,15 @@ server/
 ├── server.js                        # Server entry point
 ├── package.json
 └── .env.example
-Data Flow
-User Authentication Flow
+```
+
+---
+
+## Data Flow
+
+### User Authentication Flow
+
+```
 1. User enters email/password on login form
    ↓
 2. Frontend sends POST /api/auth/login
@@ -233,7 +271,11 @@ User Authentication Flow
 8. Frontend sets Authorization header for future requests
    ↓
 9. User can now access protected routes
-Transaction Creation Flow
+```
+
+### Transaction Creation Flow
+
+```
 1. User fills transaction form (amount, category, description, receipt)
    ↓
 2. Frontend validates form input
@@ -255,7 +297,11 @@ Transaction Creation Flow
 10. Frontend updates dashboard & refreshes charts
    ↓
 11. Toast notification shown to user
-Analytics Data Flow
+```
+
+### Analytics Data Flow
+
+```
 1. User navigates to Analytics page
    ↓
 2. Frontend sends GET /api/analytics/monthly
@@ -275,8 +321,15 @@ Analytics Data Flow
 9. Recharts renders visualization
    ↓
 10. User can interact with charts
-Database Schema
-User Model
+```
+
+---
+
+## Database Schema
+
+### User Model
+
+```javascript
 {
   _id: ObjectId,
   name: String,
@@ -291,7 +344,11 @@ User Model
   lastLogin: Date,
   isActive: Boolean (default: true)
 }
-Transaction Model
+```
+
+### Transaction Model
+
+```javascript
 {
   _id: ObjectId,
   userId: ObjectId (Reference to User),
@@ -311,7 +368,11 @@ Transaction Model
   // Index: userId, category
   // Index: userId, type
 }
-Budget Model
+```
+
+### Budget Model
+
+```javascript
 {
   _id: ObjectId,
   userId: ObjectId (Reference to User),
@@ -329,7 +390,11 @@ Budget Model
   
   // Index: userId, month
 }
-Indexes for Performance
+```
+
+### Indexes for Performance
+
+```javascript
 // User indexes
 db.users.createIndex({ email: 1 }, { unique: true })
 
@@ -340,11 +405,21 @@ db.transactions.createIndex({ userId: 1, type: 1 })
 
 // Budget indexes
 db.budgets.createIndex({ userId: 1, month: -1 })
-API Architecture
-Base URL
+```
+
+---
+
+## API Architecture
+
+### Base URL
+```
 Backend: https://smart-expense-tracker-api.onrender.com
 API Base: https://smart-expense-tracker-api.onrender.com/api
-Authentication Endpoints
+```
+
+### Authentication Endpoints
+
+```
 POST /api/auth/register
   Body: { name, email, password, confirmPassword }
   Response: { userId, token, user }
@@ -369,7 +444,11 @@ POST /api/auth/forgot-password
   Body: { email }
   Response: { message: 'Reset link sent to email' }
   Status: 200
-Transaction Endpoints
+```
+
+### Transaction Endpoints
+
+```
 GET /api/transactions
   Headers: { Authorization: Bearer <token> }
   Query: { page=1, limit=10, category=food, startDate=..., endDate=... }
@@ -397,7 +476,11 @@ DELETE /api/transactions/:id
   Headers: { Authorization: Bearer <token> }
   Response: { message: 'Deleted successfully' }
   Status: 200
-Budget Endpoints
+```
+
+### Budget Endpoints
+
+```
 GET /api/budgets
   Headers: { Authorization: Bearer <token> }
   Query: { month=2024-08 }
@@ -420,7 +503,11 @@ DELETE /api/budgets/:id
   Headers: { Authorization: Bearer <token> }
   Response: { message: 'Deleted successfully' }
   Status: 200
-Analytics Endpoints
+```
+
+### Analytics Endpoints
+
+```
 GET /api/analytics/monthly
   Headers: { Authorization: Bearer <token> }
   Query: { month=2024-08 }
@@ -442,8 +529,15 @@ GET /api/analytics/summary
   Headers: { Authorization: Bearer <token> }
   Response: { totalIncome, totalExpenses, netSavings, avgExpense }
   Status: 200
-Frontend Architecture
-Component Hierarchy
+```
+
+---
+
+## Frontend Architecture
+
+### Component Hierarchy
+
+```
 App
 ├── AuthContext Provider
 ├── ThemeContext Provider
@@ -484,7 +578,11 @@ App
     ├── Login Page
     ├── Register Page
     └── 404 Page
-State Management (Context API)
+```
+
+### State Management (Context API)
+
+```javascript
 // AuthContext
 - user: { id, name, email, ... }
 - token: JWT token
@@ -505,8 +603,15 @@ State Management (Context API)
 - updateTransaction(): void
 - deleteTransaction(): void
 - fetchTransactions(): void
-Authentication Flow
-Registration Flow
+```
+
+---
+
+## Authentication Flow
+
+### Registration Flow
+
+```
 User Input → Frontend Validation → 
   ↓
 POST /api/auth/register → 
@@ -524,7 +629,11 @@ Return Token + User Data →
 Store Token in localStorage → 
   ↓
 Redirect to Dashboard
-Login Flow
+```
+
+### Login Flow
+
+```
 User Input → Frontend Validation → 
   ↓
 POST /api/auth/login → 
@@ -542,7 +651,11 @@ Store Token in localStorage →
 Set Authorization Header → 
   ↓
 Redirect to Dashboard
-Token Management
+```
+
+### Token Management
+
+```
 JWT Structure:
 {
   Header: { alg: 'HS256', typ: 'JWT' }
@@ -565,8 +678,15 @@ If 401: Try Refresh Token →
 If Refresh Success: Retry Original Request → 
   ↓
 If Refresh Fails: Redirect to Login
-Deployment Architecture
-Frontend Deployment (Vercel)
+```
+
+---
+
+## Deployment Architecture
+
+### Frontend Deployment (Vercel)
+
+```
 GitHub Repository
     ↓
 Push to main branch
@@ -586,7 +706,11 @@ Deploy to Edge Network
 Set Environment Variables (VITE_API_BASE_URL)
     ↓
 Accessible at: https://smart-expense-tracker-phi.vercel.app
-Backend Deployment (Render)
+```
+
+### Backend Deployment (Render)
+
+```
 GitHub Repository
     ↓
 Push to main branch
@@ -604,7 +728,11 @@ Start Service (npm run dev or npm start)
 Set Environment Variables (PORT, MONGO_URI, etc.)
     ↓
 Accessible at: https://smart-expense-tracker-api.onrender.com
-Database Deployment (MongoDB Atlas)
+```
+
+### Database Deployment (MongoDB Atlas)
+
+```
 MongoDB Cloud Account
     ↓
 Create Cluster
@@ -618,8 +746,15 @@ Generate Connection String (MONGO_URI)
 Backend connects via Mongoose
     ↓
 Data persisted in cloud
-Security Architecture
-Authentication Security
+```
+
+---
+
+## Security Architecture
+
+### Authentication Security
+
+```
 ✅ Password Encryption
    └─ bcrypt with 10 salt rounds
    └─ Passwords never stored in plain text
@@ -634,7 +769,11 @@ Authentication Security
    └─ Middleware validates JWT on every request
    └─ Invalid/expired tokens rejected
    └─ User can only access own data
-Data Protection
+```
+
+### Data Protection
+
+```
 ✅ HTTPS/TLS
    └─ All communications encrypted
    └─ SSL certificates on Vercel & Render
@@ -652,7 +791,11 @@ Data Protection
    └─ Secrets never in code
    └─ Loaded from .env file
    └─ Different per environment
-Database Security
+```
+
+### Database Security
+
+```
 ✅ MongoDB Atlas
    └─ Network access restrictions
    └─ IP whitelisting
@@ -663,8 +806,15 @@ Database Security
    └─ Each user only sees own data
    └─ userId in all queries
    └─ No global admin queries
-Performance Optimization
-Frontend Optimization
+```
+
+---
+
+## Performance Optimization
+
+### Frontend Optimization
+
+```
 ✅ Code Splitting
    └─ React Router lazy loading
    └─ Separate bundles per route
@@ -688,7 +838,11 @@ Frontend Optimization
    └─ React.memo for components
    └─ useCallback for event handlers
    └─ Virtual scrolling for lists
-Backend Optimization
+```
+
+### Backend Optimization
+
+```
 ✅ Database Indexing
    └─ Indexed on userId
    └─ Indexed on dates
@@ -711,7 +865,11 @@ Backend Optimization
    └─ Average response time: <200ms
    └─ Gzip compression enabled
    └─ JSON minification
-Monitoring & Logging
+```
+
+### Monitoring & Logging
+
+```
 ✅ Error Tracking
    └─ Global error handler
    └─ Console error logging
@@ -726,20 +884,35 @@ Monitoring & Logging
    └─ Page views
    └─ Feature usage (future)
    └─ User engagement
-Future Architecture Improvements
- Implement Redis for caching
- Add message queue (RabbitMQ/Bull)
- Microservices architecture
- GraphQL API alternative
- Real-time updates with WebSockets
- Mobile app (React Native)
- PWA with offline sync
- AI service integration
- Multi-tenant support
- Advanced monitoring & alerting
-References
-Express.js Documentation
-React Documentation
-MongoDB Documentation
-JWT Introduction
-Tailwind CSS Documentation
+```
+
+---
+
+## Future Architecture Improvements
+
+- [ ] Implement Redis for caching
+- [ ] Add message queue (RabbitMQ/Bull)
+- [ ] Microservices architecture
+- [ ] GraphQL API alternative
+- [ ] Real-time updates with WebSockets
+- [ ] Mobile app (React Native)
+- [ ] PWA with offline sync
+- [ ] AI service integration
+- [ ] Multi-tenant support
+- [ ] Advanced monitoring & alerting
+
+---
+
+## References
+
+- [Express.js Documentation](https://expressjs.com/)
+- [React Documentation](https://react.dev/)
+- [MongoDB Documentation](https://docs.mongodb.com/)
+- [JWT Introduction](https://jwt.io/introduction)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+
+---
+
+**Last Updated:** August 24, 2024
+
+For questions or suggestions about the architecture, please open an issue or discussion on GitHub.
