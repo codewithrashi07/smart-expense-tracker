@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Expense Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">₹</div>
+
+            <div>
+                <h2>SmartTrack</h2>
+                <span>Expense Manager</span>
+            </div>
+        </div>
+
+
+        <nav>
+
+            <a href="#" class="nav-link active">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="#transactions" class="nav-link">
+                <span>↔</span>
+                Transactions
+            </a>
+
+            <a href="#budget" class="nav-link">
+                <span>◉</span>
+                Budget
+            </a>
+
+            <a href="#analytics" class="nav-link">
+                <span>▥</span>
+                Analytics
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button id="themeBtn" class="side-btn">
+                <button id="darkModeToggle" class="dark-mode-btn" type="button">
+    🌙 Dark Mode
+</button>
+            </button>
+
+            <button class="side-btn">
+                ⚙ Settings
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <div>
+
+                <p class="welcome">
+                    Welcome back 👋
+                </p>
+
+                <h1>
+                    Financial Dashboard
+                </h1>
+
+                <p class="subtitle">
+                    Manage your money smarter and stay on track.
+                </p>
+
+            </div>
+
+
+            <div class="profile">
+
+                <div class="avatar">
+                    R
+                </div>
+
+                <div>
+
+                    <strong>
+                        Rashi
+                    </strong>
+
+                    <small>
+                        Personal Account
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- SUMMARY CARDS -->
+        <section class="summary-grid">
+
+
+            <!-- BALANCE -->
+            <div class="summary-card balance-card">
+
+                <div class="card-top">
+
+                    <span>
+                        Total Balance
+                    </span>
+
+                    <div class="card-icon">
+                        ₹
+                    </div>
+
+                </div>
+
+                <h2 id="balance">
+                    ₹0
+                </h2>
+
+                <p>
+                    Available balance
+                </p>
+
+            </div>
+
+
+
+            <!-- INCOME -->
+            <div class="summary-card income-card">
+
+                <div class="card-top">
+
+                    <span>
+                        Total Income
+                    </span>
+
+                    <div class="card-icon">
+                        ↗
+                    </div>
+
+                </div>
+
+                <h2 id="income">
+                    ₹0
+                </h2>
+
+                <p>
+                    Money received
+                </p>
+
+            </div>
+
+
+
+            <!-- EXPENSE -->
+            <div class="summary-card expense-card">
+
+                <div class="card-top">
+
+                    <span>
+                        Total Expenses
+                    </span>
+
+                    <div class="card-icon">
+                        ↘
+                    </div>
+
+                </div>
+
+                <h2 id="expense">
+                    ₹0
+                </h2>
+
+                <p>
+                    Money spent
+                </p>
+
+            </div>
+
+
+
+            <!-- SAVINGS -->
+            <div class="summary-card saving-card">
+
+                <div class="card-top">
+
+                    <span>
+                        Savings
+                    </span>
+
+                    <div class="card-icon">
+                        💰
+                    </div>
+
+                </div>
+
+                <h2 id="savings">
+                    ₹0
+                </h2>
+
+                <p>
+                    Current savings
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- MAIN GRID -->
+        <section class="dashboard-grid">
+
+
+            <!-- ADD TRANSACTION -->
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Add Transaction
+                        </h2>
+
+                        <p>
+                            Record your income or expense
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="transactionForm">
+
+
+                    <!-- TYPE -->
+                    <div class="form-group">
+
+                        <label>
+                            Transaction Type
+                        </label>
+
+
+                        <div class="type-buttons">
+
+                            <button
+                                type="button"
+                                class="type-btn active"
+                                data-type="expense">
+
+                                Expense
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="type-btn"
+                                data-type="income">
+
+                                Income
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- DESCRIPTION -->
+                    <div class="form-group">
+
+                        <label>
+                            Description
+                        </label>
+
+                        <input
+                            type="text"
+                            id="title"
+                            placeholder="e.g. Grocery shopping"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- AMOUNT + CATEGORY -->
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Amount
+                            </label>
+
+                            <input
+                                type="number"
+                                id="amount"
+                                placeholder="₹ 0"
+                                min="1"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Category
+                            </label>
+
+                            <select id="category">
+
+                                <option>
+                                    Food
+                                </option>
+
+                                <option>
+                                    Shopping
+                                </option>
+
+                                <option>
+                                    Transport
+                                </option>
+
+                                <option>
+                                    Bills
+                                </option>
+
+                                <option>
+                                    Entertainment
+                                </option>
+
+                                <option>
+                                    Health
+                                </option>
+
+                                <option>
+                                    Education
+                                </option>
+
+                                <option>
+                                    Salary
+                                </option>
+
+                                <option>
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- DATE -->
+                    <div class="form-group">
+
+                        <label>
+                            Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="date"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="add-btn">
+
+                        + Add Transaction
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+
+            <!-- BUDGET -->
+            <div
+                class="panel"
+                id="budget">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Monthly Budget
+                        </h2>
+
+                        <p>
+                            Track your spending limit
+                        </p>
+
+                    </div>
+
+                    <button class="more-btn">
+                        •••
+                    </button>
+
+                </div>
+
+
+                <div class="budget-amount">
+
+                    <strong id="budgetSpent">
+                        ₹0
+                    </strong>
+
+                    <span>
+                        / ₹50,000
+                    </span>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <div
+                        id="budgetProgress"
+                        class="progress-bar">
+                    </div>
+
+                </div>
+
+
+                <div class="budget-info">
+
+                    <span>
+                        <b id="budgetPercentage">
+                            0%
+                        </b>
+                        used
+                    </span>
+
+                    <span>
+                        ₹50,000 limit
+                    </span>
+
+                </div>
+
+
+                <div class="budget-list">
+
+                    <div>
+                        <span>
+                            🍔 Food
+                        </span>
+
+                        <strong>
+                            ₹8,500
+                        </strong>
+                    </div>
+
+
+                    <div>
+                        <span>
+                            🛍 Shopping
+                        </span>
+
+                        <strong>
+                            ₹6,200
+                        </strong>
+                    </div>
+
+
+                    <div>
+                        <span>
+                            🚕 Transport
+                        </span>
+
+                        <strong>
+                            ₹4,800
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- RECENT TRANSACTIONS -->
+        <section
+            class="panel transactions-panel"
+            id="transactions">
+
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Recent Transactions
+                    </h2>
+
+                    <p>
+                        Your latest financial activities
+                    </p>
+
+                </div>
+
+
+                <div class="filters">
+
+                    <input
+                        type="text"
+                        id="search"
+                        placeholder="Search transaction..."
+                    >
+
+
+                    <select id="filter">
+
+                        <option value="all">
+                            All
+                        </option>
+
+                        <option value="income">
+                            Income
+                        </option>
+
+                        <option value="expense">
+                            Expense
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Transaction
+                            </th>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Amount
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="transactionList">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ANALYTICS -->
+        <section
+            class="panel analytics-panel"
+            id="analytics">
+
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Spending Overview
+                    </h2>
+
+                    <p>
+                        Your weekly spending activity
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart">
+
+                <div
+                    class="bar"
+                    style="height:45%">
+                </div>
+
+                <div
+                    class="bar"
+                    style="height:70%">
+                </div>
+
+                <div
+                    class="bar"
+                    style="height:55%">
+                </div>
+
+                <div
+                    class="bar"
+                    style="height:85%">
+                </div>
+
+                <div
+                    class="bar"
+                    style="height:60%">
+                </div>
+
+                <div
+                    class="bar"
+                    style="height:95%">
+                </div>
+
+                <div
+                    class="bar"
+                    style="height:65%">
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

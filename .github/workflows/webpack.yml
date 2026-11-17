@@ -1,28 +1,35 @@
-name: NodeJS with Webpack
+name: SmartTrack AI CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "feature/*" ]
   pull_request:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [18.x, 20.x]
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: |
+          server/package-lock.json
+          client/package-lock.json
 
-    - name: Build
+    - name: Install server dependencies
+      run: npm --prefix server install --no-audit
+
+    - name: Install client dependencies & build production bundle
       run: |
-        npm install
-        npx webpack
+        npm --prefix client install --no-audit
+        npm --prefix client run build

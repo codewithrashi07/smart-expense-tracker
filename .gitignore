@@ -1,7 +1,46 @@
+# Dependencies
 node_modules/
 client/node_modules/
 server/node_modules/
+
+# Environment variables
 .env
-.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+client/.env
+client/.env.local
+server/.env
+server/.env.local
+
+# Build artifacts
 dist/
+client/dist/
+build/
+
+# Uploads & Temporary files
+server/uploads/*
+!server/uploads/.gitkeep
+server/expenses.json
+
+# Large media files
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# IDEs & System files
+.idea/
 .vscode/
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Database & caches
+*.sqlite
+*.sqlite3
+.eslintcache
