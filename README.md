@@ -1,428 +1,265 @@
- # 💰 Smart Expense Tracker
+<h1 align="center">
+  <br>
+  ⚡ SmartTrack AI — Intelligent Personal Finance & Wealth Platform ⚡
+  <br>
+</h1>
 
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=node.js&logoColor=white)
-![Express.js](https://img.shields.io/badge/Express.js-000000?logo=express&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?logo=mongodb&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
-![JWT](https://img.shields.io/badge/Auth-JWT-black)
-![License](https://img.shields.io/badge/License-MIT-yellow)
-![Status](https://img.shields.io/badge/Status-Completed-success)
+<p align="center">
+  <strong>Production-Grade Full-Stack MERN Personal Finance Ecosystem with AI Advisory, OCR Scanning, Predictive Forecasting & Budget Guardrails</strong>
+</p>
 
-[![GitHub stars](https://img.shields.io/github/stars/codewithrashi07/smart-expense-tracker-?style=social)](https://github.com/codewithrashi07/smart-expense-tracker-)
-[![GitHub forks](https://img.shields.io/github/forks/codewithrashi07/smart-expense-tracker-?style=social)](https://github.com/codewithrashi07/smart-expense-tracker-)
-
-A modern, full-stack **Smart Expense Tracker** built with the **MERN Stack** to help users manage income, expenses, budgets, and financial insights. The application provides an intuitive dashboard, secure authentication, and powerful analytics for personal finance management.
-
----
-
-## 📑 Table of Contents
-
-- [🌐 Live Demo](#-live-demo)
-- [📖 Overview](#-overview)
-- [✨ Features](#-features)
-- [🛠 Tech Stack](#-tech-stack)
-- [📂 Project Structure](#-project-structure)
-- [⚙️ Installation](#️-installation)
-- [🔑 Environment Variables](#-environment-variables)
-- [🚀 How to Run](#-how-to-run)
-- [📸 Screenshots](#-screenshots)
-- [🔒 Security Features](#-security-features)
-- [⚡ Performance](#-performance)
-- [🚀 Future Improvements](#-future-improvements)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-- [👨‍💻 Author](#️-author)
+<p align="center">
+  <a href="https://github.com/codewithrashi07/smart-expense-tracker/actions"><img src="https://img.shields.io/github/actions/workflow/status/codewithrashi07/smart-expense-tracker/webpack.yml?branch=main&label=CI%20Pipeline&logo=githubactions&logoColor=white" alt="CI Status"></a>
+  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=black" alt="React 18"></a>
+  <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite&logoColor=white" alt="Vite"></a>
+  <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind CSS"></a>
+  <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node.js-Express-339933?logo=nodedotjs&logoColor=white" alt="Node.js"></a>
+  <a href="https://www.mongodb.com/atlas"><img src="https://img.shields.io/badge/MongoDB-Atlas_&_Mongoose-47A248?logo=mongodb&logoColor=white" alt="MongoDB"></a>
+  <a href="https://jwt.io/"><img src="https://img.shields.io/badge/Auth-JWT_%26_bcrypt-000000?logo=jsonwebtokens&logoColor=white" alt="JWT"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+</p>
 
 ---
 
-## 🌐 Live Demo
+## 🌐 Live Deployments & Demos
 
-| Platform | Link |
-|----------|------|
-| **Frontend** | https://smart-expense-tracker-phi.vercel.app |
-| **Backend API** | https://smart-expense-tracker-api.onrender.com |
-| **Test Credentials** | Email: `demo@example.com` \| Password: `demo123` |
+- **Frontend Application:** [https://smart-exp-tracker.netlify.app/](https://smart-exp-tracker.netlify.app/)
+- **GitHub Repository:** [https://github.com/codewithrashi07/smart-expense-tracker](https://github.com/codewithrashi07/smart-expense-tracker)
 
-> **Note:** First load may take 30-40 seconds as free tier services spin up. Please be patient.
+> **⚡ Instant Demo Access:** Click the **"⚡ Explore with Demo Account (Instant Access)"** button on the Login page to immediately experience the platform populated with real financial data, active budgets, savings goals, and AI insights.
 
 ---
 
-## 📖 Overview
+## 💡 Overview & Product Transformation
 
-Smart Expense Tracker is a personal finance management application that enables users to:
+**SmartTrack AI** is an enterprise-grade fintech platform transformed from a basic expense log into an intelligent personal finance OS. Designed with dark navy glassmorphism, responsive micro-interactions, dynamic charts, and automated financial intelligence, it empowers users to track income, control expenses, plan budgets with threshold alerts, forecast cashflow, and achieve savings milestones.
 
-- 📊 Track income and expenses with ease
-- 💰 Set monthly budgets by category
-- 📈 Analyze spending patterns with interactive charts
-- 📋 View comprehensive financial reports
-- 🔒 Manage transactions securely
-- 📱 Access data from any device (Responsive Design)
-- 🌙 Switch between dark/light themes
-
-The project follows industry-standard architecture and best practices, making it suitable for learning, portfolio showcases, and real-world applications.
+```mermaid
+flowchart TD
+    Client["Client (Vite + React 18 + Tailwind)"] -->|JWT Bearer REST| Server["Express REST API (Node.js)"]
+    Server --> AuthMW["JWT Authentication & Validation"]
+    AuthMW --> Controllers["Controllers (Transactions, Budgets, Goals, AI)"]
+    Controllers --> Models["Mongoose Models"]
+    Models --> DB[("MongoDB Atlas / In-Memory Tier")]
+    Controllers --> AI["SmartTrack AI Engine (Gemini / Heuristic Engine)"]
+```
 
 ---
 
-## ✨ Features
+## ✨ Core Features & Functional Modules
 
-### 🔐 Authentication & Security
-| Feature | Status |
-|---------|--------|
-| User Registration | ✅ |
-| Secure Login | ✅ |
-| JWT Authentication | ✅ |
-| Password Encryption (bcrypt) | ✅ |
-| Protected Routes | ✅ |
-| Profile Management | ✅ |
+### 1. 🔐 Security & User Authentication
+- **Secure Password Hashing:** Powered by `bcryptjs` with salt rounds.
+- **JWT Authentication:** Stateless, signed bearer tokens with auto-logout on expiry.
+- **User Isolation:** All financial records, budgets, goals, and receipts are strictly scoped per authenticated user ID.
+- **Profile Management:** Custom currency selector (USD, EUR, INR, GBP, CAD, AUD, JPY), bio, and monthly income targets.
+- **Password Recovery:** Tokenized forgot/reset password flow.
 
-### 📊 Dashboard
-| Feature | Status |
-|---------|--------|
-| Total Balance Display | ✅ |
-| Total Income & Expenses | ✅ |
-| Savings Overview | ✅ |
-| Recent Transactions | ✅ |
-| Budget Progress | ✅ |
-| Monthly Summary | ✅ |
+### 2. 💸 Advanced Transaction Management
+- **Ledger Inflows & Outflows:** Add, edit, and delete income and expense transactions.
+- **Multi-Criteria Filtering:** Instant live search by title, notes, type, category, and payment method.
+- **Sorting & Pagination:** Sort by date, amount, or merchant.
+- **Receipt Attachments:** Upload image receipts directly to entries with modal previews.
+- **CSV & PDF Exports:** One-click downloads formatted for Microsoft Excel, Apple Numbers, and audit logs.
 
-### 💸 Transaction Management
-| Feature | Status |
-|---------|--------|
-| Add Transaction | ✅ |
-| Edit Transaction | ✅ |
-| Delete Transaction | ✅ |
-| Search Transactions | ✅ |
-| Filter by Category | ✅ |
-| Filter by Date | ✅ |
-| Sort Transactions | ✅ |
-| Upload Receipt Images | ✅ |
+### 3. 🎯 Smart Budget Guardrails
+- **Monthly Category & Overall Caps:** Define spending limits per category or overall wallet.
+- **Real-Time Progress Tracking:** Dynamically compares actual ledger spend against monthly limits.
+- **Automated Threshold Warnings:** Visual indicator and system alerts triggered at:
+  - 🟢 **Normal:** < 75% utilized
+  - 🟡 **Warning:** 75% - 89% utilized
+  - 🟠 **Critical:** 90% - 99% utilized
+  - 🔴 **Exceeded:** >= 100% utilized
 
-### 📈 Analytics & Reports
-| Feature | Status |
-|---------|--------|
-| Monthly Expense Chart | ✅ |
-| Income vs Expense Chart | ✅ |
-| Category Distribution | ✅ |
-| Weekly Spending Analysis | ✅ |
-| Financial Reports | ✅ |
+### 4. 🤖 AI Finance Advisor & Smart OCR Scanner
+- **Dual-Mode AI Engine:**
+  - **Cloud LLM Integration:** Connects to Google Gemini 1.5 Flash via `GEMINI_API_KEY`.
+  - **Built-in Heuristic Engine:** Operates automatically in demo mode when no API key is provided, generating real dynamic insights from live ledger data.
+- **Contextual Spending Analysis:** Identifies top-spend categories, evaluates the 50/30/20 rule, and recommends actionable savings optimizations.
+- **Smart Receipt Scanner (OCR):** Upload receipt images to extract merchant, amount, date, and category with verification before saving.
 
-### 🎯 Budget Management
-| Feature | Status |
-|---------|--------|
-| Create Monthly Budget | ✅ |
-| Category-wise Budget | ✅ |
-| Budget Remaining Calculation | ✅ |
-| Budget Alerts | ✅ |
+### 5. 📊 Visual Analytics & Predictive Forecasting
+- **Interactive Recharts:** Area charts for cashflow trends and donut charts for category distributions.
+- **Financial Health Score (0-100):** Algorithmic rating combining savings rate, budget compliance, living expense ratio, and goal discipline.
+- **Predictive Burn Rate Forecasting:** Calculates daily average burn rate, projected month-end outflow, and safe daily spending limit for remaining days in the cycle.
 
-### 🌙 User Experience
-| Feature | Status |
-|---------|--------|
-| Responsive Design | ✅ |
-| Dark/Light Theme | ✅ |
-| Smooth Animations | ✅ |
-| Toast Notifications | ✅ |
-| Loading Skeletons | ✅ |
+### 6. 🏆 Savings Goals & Milestones
+- **Target Accumulation:** Create goals with target dates, visual badges, and deposit logs.
+- **Celebration Confetti:** Interactive milestone celebrations when a goal achieves 100% completion.
+
+### 7. 🔁 Subscriptions & Recurring Bills
+- **Subscription Tracking:** Log monthly, weekly, or yearly recurring commitments (Netflix, AWS, Rent, Utilities).
+- **One-Click Payment Processing:** Logs ledger transaction and advances the next due date automatically.
 
 ---
 
 ## 🛠 Tech Stack
 
 ### Frontend
-- **React.js** - UI Library
-- **Vite** - Build tool & dev server
-- **Tailwind CSS** - Styling
-- **React Router** - Routing
-- **Axios** - HTTP client
-- **Recharts** - Charts & Analytics
-- **Framer Motion** - Animations
-- **React Hook Form** - Form management
+- **Framework:** React 18.3, Vite 5.4
+- **Styling:** Tailwind CSS 3.4 (Custom fintech theme & dark navy glassmorphism)
+- **Routing:** React Router v6
+- **Data Visualizations:** Recharts (AreaChart, BarChart, PieChart)
+- **Icons:** Lucide React
+- **PDF Generation:** jsPDF & jsPDF-autotable
+- **Micro-interactions:** Canvas Confetti
 
 ### Backend
-- **Node.js** - Runtime
-- **Express.js** - Web framework
-- **MongoDB Atlas** - Database
-- **JWT** - Authentication
-- **Bcrypt** - Password encryption
-- **Cloudinary** - Image upload & storage
-- **Multer** - File handling
-- **Mongoose** - ODM
-
-### Deployment
-- **Vercel** - Frontend hosting
-- **Render** - Backend hosting
-- **MongoDB Atlas** - Database hosting
+- **Runtime:** Node.js v18+ / v20+ / v24+
+- **Framework:** Express.js 4
+- **Database:** MongoDB Atlas via Mongoose 8
+- **Authentication:** JSON Web Tokens (jsonwebtoken) & bcryptjs
+- **File Uploads:** Multer with file type & size constraints
+- **AI Processing:** Google Gemini API + SmartTrack Algorithmic Financial Intelligence Engine
 
 ---
 
-## 📂 Project Structure
+## 📂 Project Directory Structure
 
 ```
-Smart-Expense-Tracker/
-│
-├── client/                          # React Frontend
+smart-expense-tracker/
+├── .github/
+│   └── workflows/
+│       └── webpack.yml           # GitHub Actions CI workflow
+├── client/
+│   ├── public/
+│   │   └── _redirects            # Netlify SPA routing redirects
 │   ├── src/
-│   │   ├── components/              # Reusable React components
-│   │   ├── pages/                   # Page components
-│   │   ├── layouts/                 # Layout wrappers
-│   │   ├── hooks/                   # Custom React hooks
-│   │   ├── services/                # API service functions
-│   │   ├── context/                 # Context API providers
-│   │   ├── utils/                   # Utility functions
-│   │   ├── assets/                  # Images, icons, fonts
-│   │   ├── App.jsx
+│   │   ├── components/           # Sidebar, Navbar, TransactionModal
+│   │   ├── context/              # AuthContext & currency formatting
+│   │   ├── pages/                # Dashboard, Ledger, Budgets, Analytics, Goals, AI, Reports, Profile
+│   │   ├── services/             # API client with JWT bearer interceptors
+│   │   ├── App.jsx               # React Router routes & layout
+│   │   ├── index.css             # Tailwind base & glassmorphism
 │   │   └── main.jsx
-│   ├── package.json
-│   └── vite.config.js
-│
-├── server/                          # Express Backend
-│   ├── config/                      # Database & config files
-│   ├── controllers/                 # Business logic
-│   ├── middleware/                  # Auth, validation middleware
-│   ├── models/                      # MongoDB schemas
-│   ├── routes/                      # API routes
-│   ├── utils/                       # Helper functions
-│   ├── uploads/                     # Uploaded files (temp)
-│   ├── app.js                       # Express app setup
-│   ├── server.js                    # Server entry point
-│   ├── package.json
-│   └── .env.example
-│
+│   ├── tailwind.config.js
+│   ├── vite.config.js
+│   └── package.json
+├── server/
+│   ├── config/                   # MongoDB Atlas connection manager
+│   ├── controllers/              # Auth, Transactions, Budgets, Analytics, Goals, AI, Recurring
+│   ├── middleware/               # Auth protection, Multer upload, Error handler
+│   ├── models/                   # User, Transaction, Budget, SavingsGoal, Recurring, Notification
+│   ├── routes/                   # REST API route endpoints
+│   ├── utils/                    # Financial health score, AI engine, demo seeder
+│   ├── uploads/                  # Static receipt uploads
+│   ├── app.js                    # Express app configuration & server boot
+│   └── package.json
+├── legacy-prototype/             # Preserved original static HTML/JS prototype
 ├── .gitignore
-├── README.md
-└── LICENSE
+├── LICENSE
+└── README.md
 ```
-
-### How It Fits Together
-1. **User Flow:** User logs in via React frontend (Vercel)
-2. **Authentication:** JWT token generated & stored in localStorage
-3. **API Calls:** Frontend sends authenticated requests to Express backend (Render)
-4. **Database:** Backend queries MongoDB Atlas for data
-5. **Real-time Updates:** Frontend updates UI on successful operations
-6. **File Upload:** Receipt images uploaded to Cloudinary via Multer
 
 ---
 
-## ⚙️ Installation
+## ⚙️ Installation & Setup
 
 ### Prerequisites
-- Node.js v16+ (Download from [nodejs.org](https://nodejs.org/))
-- MongoDB account ([Create free account](https://www.mongodb.com/cloud/atlas))
-- Cloudinary account ([Sign up here](https://cloudinary.com/))
-- Git installed on your machine
+- Node.js (v18 or higher)
+- npm (v9 or higher)
+- MongoDB Atlas account (free tier) or local MongoDB
 
-### Clone Repository
-
+### 1. Clone the Repository
 ```bash
-git clone https://github.com/codewithrashi07/smart-expense-tracker-.git
-cd smart-expense-tracker-
+git clone https://github.com/codewithrashi07/smart-expense-tracker.git
+cd smart-expense-tracker
 ```
 
-### Install Frontend Dependencies
-
+### 2. Backend Setup
 ```bash
-cd client
+cd server
 npm install
-npm run dev
+
+# Copy environment example and configure
+cp .env.example .env
 ```
 
-Frontend will run on `http://localhost:5173`
-
-### Install Backend Dependencies
-
-```bash
-cd ../server
-npm install
-npm run dev
-```
-
-Backend will run on `http://localhost:5000`
-
----
-
-## 🔑 Environment Variables
-
-### Backend (.env in `server/` directory)
-
-Create a `.env` file in the `server` directory with the following variables:
-
+Edit `server/.env`:
 ```env
-# Server
 PORT=5000
 NODE_ENV=development
-
-# Database
-MONGO_URI=your_mongodb_connection_string
-
-# Authentication
-JWT_SECRET=your_super_secret_jwt_key_min_32_chars
-JWT_EXPIRY=7d
-
-# Cloudinary (for image uploads)
-CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-
-# CORS
-CLIENT_URL=http://localhost:5173
+MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/smarttrack?retryWrites=true&w=majority
+JWT_SECRET=your_jwt_secret_key_change_in_production
+JWT_EXPIRE=30d
+GEMINI_API_KEY=your_gemini_api_key_optional
 ```
 
-### Frontend (.env in `client/` directory)
-
-```env
-VITE_API_BASE_URL=http://localhost:5000/api
-```
-
----
-
-## 🚀 How to Run
-
-### Development Mode (Local)
-
-**Terminal 1 - Backend:**
+Start backend development server:
 ```bash
-cd server
 npm run dev
 ```
+Backend runs at `http://localhost:5000` (Health check: `http://localhost:5000/api/health`).
 
-**Terminal 2 - Frontend:**
+### 3. Frontend Setup
 ```bash
-cd client
+cd ../client
+npm install
 npm run dev
 ```
-
-Then open `http://localhost:5173` in your browser.
-
-### Production Build
-
-**Build Frontend:**
-```bash
-cd client
-npm run build
-```
-
-**Build Backend:**
-```bash
-cd server
-npm run build  # if you have a build script
-```
+Frontend runs at `http://localhost:5173`.
 
 ---
 
-## 📸 Screenshots
+## 📡 REST API Reference
 
-Coming soon! Here's what to expect:
-
-| Screenshot | Description |
-|------------|-------------|
-| 🔐 Login Page | User authentication with email & password |
-| 📊 Dashboard | Financial overview with key metrics |
-| 💳 Transactions | Add, edit, delete, and filter transactions |
-| 📈 Analytics | Visual charts and spending analysis |
-| 💰 Budget | Create and track budgets by category |
-| 🌙 Dark Mode | Dark theme for better user experience |
-
----
-
-## 🔒 Security Features
-
-| Feature | Implementation |
-|---------|----------------|
-| Password Hashing | bcrypt with salt rounds: 10 |
-| Token Based Auth | JWT with 7-day expiry |
-| Protected Routes | Middleware-based auth checking |
-| CORS Configuration | Configured for specific origins |
-| Input Validation | Server-side validation on all inputs |
-| Secure Headers | Best practices for security headers |
-| Environment Variables | Secrets stored in .env (never in git) |
-
----
-
-## ⚡ Performance
-
-| Metric | Value |
-|--------|-------|
-| Frontend Bundle Size | ~35KB (gzipped) |
-| Average API Response | <200ms |
-| Database Query Optimization | Indexed for common queries |
-| Image Optimization | Cloudinary compression |
-| Caching Strategy | Browser cache + API response caching |
-| Lighthouse Score | Mobile: 85+, Desktop: 90+ |
+| Method | Endpoint | Description | Auth Required |
+|---|---|---|:---:|
+| `GET` | `/api/health` | System health check & DB status | No |
+| `POST` | `/api/auth/register` | Register new user account | No |
+| `POST` | `/api/auth/login` | Login user & issue JWT token | No |
+| `GET` | `/api/auth/me` | Get current logged-in user profile | Yes |
+| `PUT` | `/api/auth/profile` | Update profile, currency, & income target | Yes |
+| `GET` | `/api/transactions` | Query ledger with search, category, date filters | Yes |
+| `POST` | `/api/transactions` | Create new income/expense entry | Yes |
+| `PUT` | `/api/transactions/:id` | Edit transaction entry | Yes |
+| `DELETE`| `/api/transactions/:id` | Delete transaction entry | Yes |
+| `POST` | `/api/transactions/upload-receipt` | Upload image receipt | Yes |
+| `GET` | `/api/transactions/export/csv` | Export ledger as CSV | Yes |
+| `GET` | `/api/budgets` | Fetch monthly budgets with spent calculation | Yes |
+| `POST` | `/api/budgets` | Upsert budget limit for category/month | Yes |
+| `GET` | `/api/analytics/overview` | Dashboard executive KPI summary | Yes |
+| `GET` | `/api/analytics/trends` | 6/12 month income vs expense timeline | Yes |
+| `GET` | `/api/analytics/forecast` | Predictive burn rate & daily spending limit | Yes |
+| `GET` | `/api/goals` | Fetch savings goals | Yes |
+| `POST` | `/api/goals/:id/contribute` | Deposit contribution towards savings goal | Yes |
+| `GET` | `/api/recurring` | Fetch recurring subscriptions & bills | Yes |
+| `POST` | `/api/recurring/:id/process`| Mark bill paid & auto-advance due date | Yes |
+| `GET` | `/api/ai/insights` | Fetch automated spending insights | Yes |
+| `POST` | `/api/ai/chat` | Interactive AI Financial Advisor prompt | Yes |
+| `POST` | `/api/ai/scan-receipt` | OCR scan receipt for merchant, total & date | Yes |
 
 ---
 
-## 🚀 Future Improvements
+## 🚀 Deployment Guide
 
-- 🤖 AI-powered expense insights
-- 🧠 OCR Receipt Scanner
-- 📧 Email Reports & Exports
-- 💱 Multi-Currency Support
-- 🔄 Recurring Transactions
-- 🎯 Savings Goals
-- 🔔 Push Notifications
-- 📱 Progressive Web App (PWA)
-- 📊 Advanced Reporting
-- 🌍 Multi-language Support
+### Deploying Frontend to Netlify
+1. Connect your GitHub repository to [Netlify](https://www.netlify.com/).
+2. Set **Base directory**: `client`
+3. Set **Build command**: `npm run build`
+4. Set **Publish directory**: `client/dist`
+5. Add environment variable: `VITE_API_URL` = `https://your-backend.onrender.com`
+6. Note: `client/public/_redirects` is already included to ensure React Router client-side routing works without 404 errors on reload.
 
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Follow these steps:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/AmazingFeature`)
-3. **Commit** your changes (`git commit -m 'Add AmazingFeature'`)
-4. **Push** to the branch (`git push origin feature/AmazingFeature`)
-5. **Open** a Pull Request
-
-Please make sure to:
-- Follow the existing code style
-- Write meaningful commit messages
-- Add comments for complex logic
-- Test your changes before submitting PR
+### Deploying Backend to Render
+1. Create a new **Web Service** on [Render](https://render.com/).
+2. Set **Root Directory**: `server`
+3. Set **Build Command**: `npm install`
+4. Set **Start Command**: `node app.js`
+5. Configure Environment Variables:
+   - `NODE_ENV` = `production`
+   - `PORT` = `10000`
+   - `MONGO_URI` = `mongodb+srv://...`
+   - `JWT_SECRET` = `<your-secure-secret>`
+   - `GEMINI_API_KEY` = `<your-gemini-key>`
 
 ---
 
-## 📄 License
+## 📄 License & Author
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+Distributed under the **MIT License**. See `LICENSE` for details.
 
-MIT License Terms:
-- ✅ Commercial use allowed
-- ✅ Modification allowed
-- ✅ Distribution allowed
-- ✅ Private use allowed
-- ❌ Liability not included
-- ❌ Warranty not included
-
----
-
-## 👨‍💻 Author
-
-**Rashi Yadav**
-
-- **GitHub:** [@codewithrashi07](https://github.com/codewithrashi07)
-- **LinkedIn:** [Rashi Yadav](https://linkedin.com/in/rashi-yadav-617ab437b/)
-- **Email:** rashiyadav684@email.com
-
----
-
-## 📞 Support
-
-If you encounter any issues or have questions:
-- Open an [Issue](https://github.com/codewithrashi07/smart-expense-tracker-/issues)
-- Email: rashiyadav684@email.com
-- Check existing [Discussions](https://github.com/codewithrashi07/smart-expense-tracker-/discussions)
-
----
-
-## Acknowledgments
-
-- Inspired by modern finance management apps
-- Built with ❤️ using MERN Stack
-- Thanks to all open-source communities
-
----
-
-⭐ **If you find this project helpful, please consider giving it a star!** ⭐
+**Author:** Rashi Yadav  
+- **GitHub:** [@codewithrashi07](https://github.com/codewithrashi07)  
+- **LinkedIn:** [rashi-yadav](https://linkedin.com/in/rashi-yadav-617ab437b/)  
+- **Email:** rashiyadav684@gmail.com
